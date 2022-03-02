@@ -1,0 +1,19 @@
+- there is no point in checking the humidity sensors more often than one hour (maybe even less often), because the soil will not dry faster than 2-3 days
+- I read right at the beginning of the program to have some values ​​relevant for data processing, from here "the_first_read"
+- I discovered that it is better to leave the pumps open for a certain period of time (these are different because the hoses have different lengths due to
+placing the pots and the tank in front of each other + I timed the water level distributed during this time, so that there is not too much water at once
+and not too little) than to recheck the humidity sensors again (they come in direct contact with the water coming from the hose and then it will stop my pump too
+quickly and will need to be restarted several times)
+- for the level, there are several factors that can affect the water level (in addition to the normal consumption through pumps) and then I decided to check it constantly
+- if the water level is low => I don't have water => I don't have anything to draw from the tank => there is no point in starting the pumps
+- once the level is low, I will start a buzzer (sounds for 2 seconds every 30 seconds)
+- if the level is not low, the function is not called, so the force_buzzer signal will not influence its behavior either
+- apparently I don't have a passive buzzer, but an active beeper and then (from many attempts I discovered why it keeps ringing and when I gave it a noTone ()) I just have to write
+High on him and he stops
+I also implemented an android application through which I obtain the data from the sensor and at the same time I can control the pumps manually and stop the buzzer
+- I make the connection via bluetooth
+- I read more characters on the serial and to make everything work fine, I added "data_available", which tells me when all the data on the serial was read
+and only then do they allow that data to influence the operation of the program
+- from here I have the variables force_pomp1, force_pomp2 and force_buzzer, which from the if hierarchy, have a higher level of influence
+- I do not intend to start the buzzer, once forced, to stop, it will not ring until I force it to work back normally
+- for pumps, for demonstration, I introduced to be able to open them even if the sensors do not detect low soil moisture 
